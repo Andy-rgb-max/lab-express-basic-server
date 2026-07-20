@@ -12,29 +12,26 @@ const PORT = 5005;
 
 // MIDDLEWARE
 app.use(express.static("public"));
-
 app.use(express.json());
-
 app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/home.html");
 });
 
-app.listen(PORT, () => {
-  console.log(`Serveur démarré sur http://localhost:${PORT}`);
-});
-
-
-// ROUTES
 app.get("/blog", (req, res) => {
     res.sendFile(__dirname + "/views/blog.html");
 });
 
+// ROUTES
 app.get("/api/projects", (req, res) => {
     res.json(projects);
 });
 
 app.get("/api/articles", (req, res) => {
     res.json(articles);
+});
+
+app.listen(PORT, () => {
+  console.log(`Serveur démarré sur http://localhost:${PORT}`);
 });
